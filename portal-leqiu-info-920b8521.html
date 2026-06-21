@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>乐球体育 · 稳定入口与页面说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background: linear-gradient(145deg, #fbe9e0 0%, #f8d5c0 50%, #f0c8b0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+            color: #3a2a22;
+        }
+
+        .page-wrap {
+            max-width: 1140px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 主卡片容器 */
+        .hero-card {
+            background: #fffefc;
+            border-radius: 38px;
+            padding: 2.5rem 2.2rem;
+            box-shadow: 0 20px 40px -12px rgba(120, 60, 40, 0.25), 0 8px 16px -4px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.25s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .hero-card:hover {
+            box-shadow: 0 28px 52px -14px rgba(130, 70, 45, 0.30);
+        }
+
+        /* 主视觉区域 */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+            margin-bottom: 2.8rem;
+            border-bottom: 1px solid #f2e3da;
+            padding-bottom: 2.2rem;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 520;
+            letter-spacing: 1px;
+            color: #4f3328;
+            line-height: 1.2;
+            margin-bottom: 0.2rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(130deg, #b46947, #8d4f32);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 560;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: #6b4d3d;
+            max-width: 80%;
+            background: #faf1eb;
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            display: inline-block;
+            letter-spacing: 0.3px;
+            border: 1px solid #f0ddd2;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: #4d3a30;
+            margin-top: 0.2rem;
+        }
+
+        .hero-desc a {
+            color: #b46947;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .hero-desc a:hover {
+            color: #8d4f32;
+            border-bottom-color: #b46947;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.8rem;
+            margin: 2.2rem 0 2.8rem 0;
+        }
+
+        .info-card {
+            background: #fcf7f3;
+            border-radius: 24px;
+            padding: 1.6rem 1.2rem 1.8rem 1.2rem;
+            transition: transform 0.2s ease, background 0.2s;
+            border: 1px solid #f0e0d6;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            background: #fcf4ee;
+            border-color: #dfc5b7;
+        }
+
+        .info-card h3 {
+            font-size: 1.25rem;
+            font-weight: 540;
+            color: #593e30;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.2px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .info-card h3::before {
+            content: "·";
+            font-size: 1.8rem;
+            color: #ba7b5c;
+            line-height: 1;
+        }
+
+        .info-card p {
+            color: #4d3a30;
+            font-size: 0.94rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .info-card .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.4rem;
+            margin-top: 0.8rem;
+        }
+
+        .tag {
+            background: #e4cfc2;
+            color: #3e2c23;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 450;
+            letter-spacing: 0.4px;
+            border: 1px solid #d5bcac;
+        }
+
+        /* 适合人群卡片 — 单独加一点视觉区分 */
+        .audience-card {
+            background: #faf0e9;
+            border-left: 5px solid #c08669;
+        }
+
+        /* 自然链接段落 + FAQ 摘要区域 */
+        .link-block {
+            background: #f9f2ec;
+            border-radius: 30px;
+            padding: 1.8rem 2rem;
+            margin: 1.8rem 0 1rem 0;
+            border: 1px solid #edd9ce;
+        }
+
+        .link-block p {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: #3f3027;
+        }
+
+        .link-block a {
+            color: #b46947;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .link-block a:hover {
+            border-bottom-color: #b46947;
+            color: #824d33;
+        }
+
+        .faq-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.8rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #dfcabc;
+        }
+
+        .faq-item {
+            flex: 1 0 180px;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 550;
+            color: #593e30;
+            font-size: 0.9rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .faq-item span {
+            font-size: 0.88rem;
+            color: #584338;
+        }
+
+        /* 底部辅助 */
+        .foot-note {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7d6253;
+            border-top: 1px solid #eeddd2;
+            padding-top: 1.5rem;
+        }
+
+        .foot-note a {
+            color: #8b6049;
+            text-decoration: none;
+            border-bottom: 1px dotted #c9aa99;
+        }
+
+        .foot-note a:hover {
+            border-bottom-style: solid;
+            color: #593e30;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 768px) {
+            .hero-card {
+                padding: 1.8rem 1.2rem;
+                border-radius: 28px;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-sub {
+                max-width: 100%;
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .link-block {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .hero-card {
+                padding: 1.4rem 0.8rem;
+            }
+            .faq-summary {
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <div class="hero-card">
+        <!-- 主视觉 -->
+        <div class="hero-section">
+            <div class="hero-title">
+                稳定入口 · <span>乐球体育</span>
+            </div>
+            <div class="hero-sub">
+                页面说明 · 信息卡片式向导
+            </div>
+            <div class="hero-desc">
+                一个安静的介绍页。从这里了解 <a href="https://portal-leqiu.com">乐球体育</a> 的用途、场景与人群定位，无需跳转即可获得概览。
+            </div>
+        </div>
+
+        <!-- 用途卡片 + 特点卡片 + 适合人群 -->
+        <div class="card-grid">
+            <!-- 用途卡片 -->
+            <div class="info-card">
+                <h3>用途说明</h3>
+                <p>作为信息聚合与导航入口，提供稳定的路径直达核心功能。页面结构清晰，减少冗余跳转。</p>
+                <div class="tag-group">
+                    <span class="tag">导航</span>
+                    <span class="tag">信息聚合</span>
+                    <span class="tag">轻量入口</span>
+                </div>
+            </div>
+            <!-- 特点卡片 -->
+            <div class="info-card">
+                <h3>特点简述</h3>
+                <p>响应式布局、暖色渐变背景与白色卡片形成舒适阅读区。每个模块独立，便于快速浏览。</p>
+                <div class="tag-group">
+                    <span class="tag">响应式</span>
+                    <span class="tag">暖色系</span>
+                    <span class="tag">卡片布局</span>
+                </div>
+            </div>
+            <!-- 适合人群卡片 加了一点视觉标识 -->
+            <div class="info-card audience-card">
+                <h3>适合人群</h3>
+                <p>需要快速了解页面结构与功能范围的访问者。也适合希望从单一入口获取信息概览的使用者。</p>
+                <div class="tag-group">
+                    <span class="tag">新访客</span>
+                    <span class="tag">信息浏览者</span>
+                    <span class="tag">轻度用户</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 自然链接段落 + FAQ 摘要 -->
+        <div class="link-block">
+            <p>
+                如果你正在寻找一个稳定的起点，那么 <a href="https://portal-leqiu.com">乐球体育</a> 的位置正好合适。这个页面本身即作为一段安静说明，没有冗余的干扰，卡片之间各自独立又彼此呼应。
+            </p>
+            <p>
+                从用途卡片到人群定位，每一块内容都在尝试传递同一件事：一个经过整理的入口，比散落的链接更省心。你可以把这里当作一个简单的参考，也随时可以根据需要继续探索。
+            </p>
+
+            <!-- FAQ 摘要 -->
+            <div class="faq-summary">
+                <div class="faq-item">
+                    <strong>这个页面是做什么的？</strong>
+                    <span>展示乐球体育的稳定入口与用途卡片，帮助新访客快速理解页面结构。</span>
+                </div>
+                <div class="faq-item">
+                    <strong>链接指向哪里？</strong>
+                    <span>指向 <a href="https://portal-leqiu.com" style="border-bottom: 1px dotted #b46947; color: #7a523b;">乐球体育</a> 的主站点，适合作为起点。</span>
+                </div>
+                <div class="faq-item">
+                    <strong>内容会更新吗？</strong>
+                    <span>当前为静态介绍页，信息卡片保持稳定，未来或根据需求调整。</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部辅助 -->
+        <div class="foot-note">
+            <span>信息卡片式 · 由稳定入口和页面说明展开</span><br>
+            <span style="font-size: 0.8rem; opacity: 0.7;">— 安静、克制、有一点叙述感 —</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
